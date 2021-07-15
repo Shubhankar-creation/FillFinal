@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - G_F
+  - G_B
+  - G_R
+  - G_L
+  - G_FR
+  - G_FL
+  - G_BR
+  - G_BL
   layers:
   - Default
   - TransparentFX
