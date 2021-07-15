@@ -8,19 +8,19 @@ public class GroundSpawner : MonoBehaviour
     public GameObject G_Holder;
     private GameObject groundInstance;
 
-    private Transform groundColPos;
+    public Transform groundColPos;
 
-    private bool canSpawn;
-    private bool FSpawn, BSpawn, RSpawn, LSpawn, FRSpawn, FLSpawn, BRSpawn, BLSpawn;
+    public bool canSpawn;
 
-    private float posX, posZ;
-    private int collCount = 0, k = 7;
+    public float posX, posZ;
+    private int k = 7;
 
     private Vector2 currGround;
     public Vector2[] allGroundPos;
 
     private void Start()
     {
+
         allGroundPos = new Vector2[]
         {
             new Vector2(0f, 0f),
@@ -45,9 +45,9 @@ public class GroundSpawner : MonoBehaviour
             if(canSpawn)
             {
                 GInstance();
-                FSpawn = true;
-                collCount++;
+
             }
+
         }
 
         if (col == "G_B")
@@ -58,8 +58,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                BSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -71,8 +70,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                RSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -84,8 +82,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                LSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -97,8 +94,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                FRSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -110,8 +106,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                FLSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -123,8 +118,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                BRSpawn = true;
-                collCount++;
+
             }
         }
 
@@ -136,8 +130,7 @@ public class GroundSpawner : MonoBehaviour
             if (canSpawn)
             {
                 GInstance();
-                BLSpawn = true;
-                collCount++;
+
             }
         }
     }
@@ -150,12 +143,11 @@ public class GroundSpawner : MonoBehaviour
     void checkGroundPos(float x, float y)
     {
         int flag = 0;
+        currGround.x = x;
+        currGround.y = y;
 
         for (int i = 0; i < 8; i++)
         {
-            currGround.x = x;
-            currGround.y = y;
-
 
             if (allGroundPos[i] == currGround)
             {

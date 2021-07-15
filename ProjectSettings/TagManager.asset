@@ -12,6 +12,7 @@ TagManager:
   - G_FL
   - G_BR
   - G_BL
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
