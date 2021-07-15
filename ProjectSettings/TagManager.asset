@@ -13,6 +13,8 @@ TagManager:
   - G_BR
   - G_BL
   - Hole
+  - AllyShape
+  - EnemyShape
   layers:
   - Default
   - TransparentFX

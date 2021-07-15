@@ -23,5 +23,9 @@ public class GroundDestroy : MonoBehaviour
             }
             Destroy(GPrefab);
         }
+        else if(other.gameObject.CompareTag("Hole"))
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
+        }
     }
 }
