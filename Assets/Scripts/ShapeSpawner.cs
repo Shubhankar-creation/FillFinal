@@ -10,7 +10,6 @@ public class ShapeSpawner : MonoBehaviour
     private void Start()
     {
         InstanceShape();
-        StartCoroutine("waitShapeSpawn");
     }
 
     private void Update()
@@ -32,13 +31,13 @@ public class ShapeSpawner : MonoBehaviour
                 Random.Range(playerPos.z + 10f, playerPos.z + 20f));
 
             GameObject newShape;
-            if (i % 2 == 0)
+            if (i == 2)
             {
-                newShape = Instantiate(allyShape, newPos, Quaternion.identity) as GameObject;
+                newShape = Instantiate(EnemShape, newPos, Quaternion.identity) as GameObject;
             }
             else
             {
-                newShape = Instantiate(EnemShape, newPos, Quaternion.identity) as GameObject;
+                newShape = Instantiate(allyShape, newPos, Quaternion.identity) as GameObject;
             }
 
             newShape.transform.parent = this.transform;
