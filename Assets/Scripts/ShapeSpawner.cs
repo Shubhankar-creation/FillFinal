@@ -18,7 +18,7 @@ public class ShapeSpawner : MonoBehaviour
     }
     IEnumerator waitShapeSpawn()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         InstanceShape();
     }
 
@@ -26,7 +26,7 @@ public class ShapeSpawner : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            Vector3 newPos = new Vector3(Random.Range(playerPos.x - 3.5f, playerPos.x + 10f),
+            Vector3 newPos = new Vector3(Random.Range(playerPos.x - 7.5f, playerPos.x + 15f),
                 0.125f,
                 Random.Range(playerPos.z + 10f, playerPos.z + 20f));
 

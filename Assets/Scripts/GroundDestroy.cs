@@ -5,11 +5,19 @@ using UnityEngine;
 public class GroundDestroy : MonoBehaviour
 {
     private GroundSpawner getvectorPos;
+    public GameObject PM;
+    void Update()
+    {
+        transform.position = new Vector3(PM.transform.position.x,
+            transform.position.y,
+            PM.transform.position.z);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
         GameObject GPrefab = other.gameObject.transform.parent.gameObject;
-        getvectorPos = GameObject.FindGameObjectWithTag("Player").GetComponent<GroundSpawner>();
+        getvectorPos = PM.GetComponent<GroundSpawner>();
 
         if(GPrefab.layer == LayerMask.NameToLayer("Ground"))
         {
@@ -23,7 +31,7 @@ public class GroundDestroy : MonoBehaviour
             }
             Destroy(GPrefab);
         }
-        else if(other.gameObject.CompareTag("Hole"))
+        else if (other.gameObject.CompareTag("Hole"))
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
