@@ -5435,7 +5435,6 @@ MonoBehaviour:
     type: 3}
   EnemShape: {fileID: 7034620712811101325, guid: 6bb7316623673454dadfba7aa4a5fb15,
     type: 3}
-  playerRot: {fileID: 714895064}
 --- !u!1001 &1697154916
 PrefabInstance:
   m_ObjectHideFlags: 0

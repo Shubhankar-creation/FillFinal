@@ -15,7 +15,10 @@ public class ShapeSpawner : MonoBehaviour
     {
         playerRot = player.transform.localEulerAngles.y;
         playerPos = player.transform.position;
-        getSpawnPos();
+
+        xPos.x = -4f; xPos.y = 4f;
+        zPos.x = 0f; zPos.y = 10f;
+
         InstanceShape();
     }
 
@@ -30,26 +33,26 @@ public class ShapeSpawner : MonoBehaviour
         if (playerRot >= 0f && playerRot < 90f)
         {
 
-            xPos.x = -7.5f; xPos.y = 15f;
+            xPos.x = -2f; xPos.y = 15f;
             zPos.x = 10f; zPos.y = 20f;
         }
         else if (playerRot >= 90f && playerRot < 180f)
         {
 
-            xPos.x = 10f; xPos.y = 20f;
-            zPos.x = -10f; zPos.y = 10f;
-        }
-        else if (playerRot >= 180 && playerRot < 270)
-        {
-
-            xPos.x = -7.5f; xPos.y = 15f;
+            xPos.x = -2f; xPos.y = 15f;
             zPos.x = -10f; zPos.y = -20f;
         }
-        else if (playerRot >= 270 && playerRot < 360)
+        else if (playerRot >= -180 && playerRot < -90)
         {
 
-            xPos.x = -10f; xPos.y = -20f;
-            zPos.x = -10f; zPos.y = 10f;
+            xPos.x = -15f; xPos.y = 2f;
+            zPos.x = -10f; zPos.y = -20f;
+        }
+        else if (playerRot >= -90 && playerRot < 0)
+        {
+
+            xPos.x = -15f; xPos.y = 2f;
+            zPos.x = 10f; zPos.y = 20f;
         }
     }
 
@@ -77,7 +80,7 @@ public class ShapeSpawner : MonoBehaviour
     }
     IEnumerator waitShapeSpawn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         getSpawnPos();
         InstanceShape();
     }
