@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector3(xSlide, transform.position.y, transform.position.z);
 
                 // Rotating the player based on sidewaysMovement
-                transform.Rotate(Vector3.up * touch.deltaPosition.x / (rotationSensitivity * 10 + 10), Space.Self);
+                transform.Rotate(Vector3.up * touch.deltaPosition.x / (rotationSensitivity * 10 + 10), Space.World);
 
             }
         }
