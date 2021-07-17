@@ -4,12 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Manageuiandmat : MonoBehaviour
 {
-    public int score = 0;
+    public float score = 0;
+
     public int level = 1;
+    public int randInd = 0;
+
     public Text getLevel;
     public Text getScore;
+
     public Slider progressBar;
-    private float fillSpeed = 0.75f;
+
+    public Material[] groundMaterials;
+
     void Start()
     {
         getLevel.text = "Level " + level;
@@ -17,10 +23,44 @@ public class Manageuiandmat : MonoBehaviour
 
     void Update()
     {
-        
-        if(progressBar.value < score)
+        if(score >= 100f)
         {
-            progressBar.value += fillSpeed * Time.deltaTime;
+            changingProgressBar();
+            gettingnewMaterials();
+        }
+    }
+
+    private void changingProgressBar()
+    {
+        getLevel.text = "Level " + ++level;
+        getScore.text = "0%";
+        progressBar.value = 0f;
+        score = 0f;
+        if(level % 2 == 0) getLevel.color = Color.white;
+    }
+    void gettingnewMaterials()
+    {
+        getInd(randInd);
+        changeInitialSpawnObj();
+    }
+
+    void getInd(int i)
+    {
+        while(randInd == i)     randInd = Random.Range(0, 2);
+    }
+    void changeInitialSpawnObj()
+    {
+        GameObject[] allGround = GameObject.FindGameObjectsWithTag("Ground");
+
+        foreach(GameObject g in allGround)
+        {
+            g.GetComponent<MeshRenderer>().material = groundMaterials[randInd];
+        }
+        GameObject[] allHoles = GameObject.FindGameObjectsWithTag("Hole");
+
+        foreach(GameObject hole in allHoles)
+        {
+            hole.GetComponent<MeshRenderer>().material = groundMaterials[1 - randInd];
         }
     }
 }

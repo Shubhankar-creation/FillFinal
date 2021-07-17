@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: 0}
+  m_AnchoredPosition: {x: -0.99999976, y: 0}
+  m_SizeDelta: {x: -12, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &385497001 stripped
 GameObject:
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 749510223}
   - component: {fileID: 749510222}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: UI/MatManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,11 +299,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa71c2b5a89ae04086092fff4b598cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 99
   level: 1
+  randInd: 0
   getLevel: {fileID: 1851225609}
   getScore: {fileID: 1620749251}
   progressBar: {fileID: 1880878347}
+  groundMaterials:
+  - {fileID: 2100000, guid: 572ba8b7529d28e4c895290b6768fa7f, type: 2}
+  - {fileID: 2100000, guid: 7b5b17fccedb37046b33d29ea3dabac3, type: 2}
 --- !u!4 &749510223
 Transform:
   m_ObjectHideFlags: 0
@@ -737,7 +741,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1171,6 +1175,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5819691231051288771, guid: 8ec408ae56921374b80fcb191e99fbc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 572ba8b7529d28e4c895290b6768fa7f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec408ae56921374b80fcb191e99fbc3, type: 3}
 --- !u!1001 &7590999738459363948

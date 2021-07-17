@@ -15,6 +15,7 @@ TagManager:
   - Hole
   - AllyShape
   - EnemyShape
+  - Ground
   layers:
   - Default
   - TransparentFX

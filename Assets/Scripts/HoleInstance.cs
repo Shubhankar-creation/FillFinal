@@ -11,8 +11,10 @@ public class HoleInstance : MonoBehaviour
 
     public GameObject HoleShape;
 
+    private Manageuiandmat changeHMat;
     private void Start()
     {
+        changeHMat = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
         respawnColDetect = GameObject.FindGameObjectWithTag("Player").GetComponent<GroundSpawner>();
         for (int i = 0; i < 4; i++)
         {
@@ -49,6 +51,9 @@ public class HoleInstance : MonoBehaviour
         newHole = Instantiate(HoleShape, new Vector3(xVal, 0f, zVal), Quaternion.identity) as GameObject;
         newHole.tag = "Hole";
         newHole.transform.parent = HoleParent.transform;
+
+        newHole.GetComponent<MeshRenderer>().material = changeHMat.groundMaterials[1 - changeHMat.randInd];
+
 
 
         newHole.AddComponent<EnemyFollow>();

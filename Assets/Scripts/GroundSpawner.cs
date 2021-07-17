@@ -18,8 +18,12 @@ public class GroundSpawner : MonoBehaviour
     private Vector2 currGround;
     public Vector2[] allGroundPos;
 
+    private Manageuiandmat changeGMat;
+    private GameObject[] allgroundGOs;
+
     private void Start()
     {
+        changeGMat = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
 
         allGroundPos = new Vector2[]
         {
@@ -33,6 +37,7 @@ public class GroundSpawner : MonoBehaviour
             new Vector2(0f, 0f)
         };
     }
+
     private void OnTriggerEnter(Collider other)
     {
         string col = other.gameObject.tag;
@@ -173,6 +178,9 @@ public class GroundSpawner : MonoBehaviour
         groundInstance = Instantiate(G_Prefab,
                                 new Vector3(groundColPos.transform.position.x + posX, 0f, groundColPos.transform.position.z + posZ), Quaternion.Euler(90f, 0f, 0f)) as GameObject;
         groundInstance.transform.parent = G_Holder.transform;
+
+        groundInstance.GetComponent<MeshRenderer>().material = changeGMat.groundMaterials[changeGMat.randInd];
+
 
     }
 }
