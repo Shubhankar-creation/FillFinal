@@ -1,20 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShapeDetect : MonoBehaviour
 {
+    private Manageuiandmat scoreUpdate;
+
+    private void Start()
+    {
+        scoreUpdate = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("AllyShape"))
         {
-            Debug.Log("Points should be awared");
+            scoreUpdate.score++;
+            scoreUpdate.getScore.text = scoreUpdate.score + "%";
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("EnemyShape"))
         {
-            Debug.Log("Points should be deduced");
+            if(scoreUpdate.score < 0)
+            {
+                Debug.Log("Quit Game");
+            }
+            else
+            {
+                scoreUpdate.score--;
+                scoreUpdate.getScore.text = scoreUpdate.score + "%";
+            }
             Destroy(other.gameObject);
         }
+        scoreUpdate.progressBar.value = scoreUpdate.score;
     }
 }

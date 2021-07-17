@@ -16,8 +16,8 @@ public class ShapeSpawner : MonoBehaviour
         playerRot = player.transform.localEulerAngles.y;
         playerPos = player.transform.position;
 
-        xPos.x = -4f; xPos.y = 4f;
-        zPos.x = 0f; zPos.y = 10f;
+        xPos.x = 0; xPos.y = 10f;
+        zPos.x = 5f; zPos.y = 10f;
 
         InstanceShape();
     }
