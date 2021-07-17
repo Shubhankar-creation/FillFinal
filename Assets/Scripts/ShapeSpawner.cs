@@ -30,29 +30,48 @@ public class ShapeSpawner : MonoBehaviour
 
     private void getSpawnPos()
     {
-        if (playerRot >= 0f && playerRot < 90f)
+        if (playerRot >= 0f && playerRot < 45f)
         {
 
-            xPos.x = -2f; xPos.y = 15f;
-            zPos.x = 10f; zPos.y = 20f;
+            xPos.x = -2f; xPos.y = 10f;
+            zPos.x = 5f; zPos.y = 15f;
         }
-        else if (playerRot >= 90f && playerRot < 180f)
+        else if (playerRot >= 45f && playerRot < 90f)
         {
-
-            xPos.x = -2f; xPos.y = 15f;
+            xPos.x = 10f; xPos.y = 20f;
+            zPos.x = -5f; zPos.y = 15f;
+        }
+        else if (playerRot >= 90f && playerRot < 135f)
+        {
+            xPos.x = 10f; xPos.y = 20f;
+            zPos.x = 0f; zPos.y = -10f;
+        }
+        else if (playerRot >= 135f && playerRot < 180f)
+        {
+            xPos.x = 5f; xPos.y = 15f;
             zPos.x = -10f; zPos.y = -20f;
         }
-        else if (playerRot >= -180 && playerRot < -90)
+        else if (playerRot >= 180f && playerRot < 225)
         {
 
-            xPos.x = -15f; xPos.y = 2f;
+            xPos.x = 2f; xPos.y = -15f;
             zPos.x = -10f; zPos.y = -20f;
         }
-        else if (playerRot >= -90 && playerRot < 0)
+        else if (playerRot >= 225f && playerRot < 270f)
+        {
+            xPos.x = -5f; xPos.y = -15f;
+            zPos.x = -5f; zPos.y = -15f;
+        }
+        else if (playerRot >= 270f && playerRot < 315f)
+        {
+            xPos.x = -10f; xPos.y = -20f;
+            zPos.x = 0f; zPos.y = 10f;
+        }
+        else if (playerRot >= 315f && playerRot < 360)
         {
 
-            xPos.x = -15f; xPos.y = 2f;
-            zPos.x = 10f; zPos.y = 20f;
+            xPos.x = -5; xPos.y = -15f;
+            zPos.x = 2f; zPos.y = 15f;
         }
     }
 
