@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.useGravity)
         {
             rb.drag = 0;
-            rb.AddForce(new Vector3(0f, -1f, 1f));
+            rb.AddForce(new Vector3(0f, -1f, 0f));
         }
         else
         {

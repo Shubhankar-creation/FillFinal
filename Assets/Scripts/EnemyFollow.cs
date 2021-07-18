@@ -7,7 +7,7 @@ public class EnemyFollow : MonoBehaviour
     Transform tr_Player;
     float f_RotSpeed = 3.0f, f_MoveSpeed = 2.0f;
 
-    public float MobDist = 40f;
+    public float MobDist = 30f;
     private float currTime, targetTime = 20f;
 
     // Use this for initialization
@@ -43,7 +43,7 @@ public class EnemyFollow : MonoBehaviour
 
     IEnumerator waitForEnemyFollow()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(20f);
         currTime = 0f;
     }
 }
