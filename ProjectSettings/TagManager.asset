@@ -16,6 +16,8 @@ TagManager:
   - AllyShape
   - EnemyShape
   - Ground
+  - Setting
+  - Music
   layers:
   - Default
   - TransparentFX

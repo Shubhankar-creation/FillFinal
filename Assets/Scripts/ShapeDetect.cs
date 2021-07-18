@@ -12,8 +12,8 @@ public class ShapeDetect : MonoBehaviour
     {
         if(other.gameObject.CompareTag("AllyShape"))
         {
-            scoreUpdate.score += (scoreUpdate.progressBar.maxValue / 100f);
-            scoreUpdate.getScore.text = scoreUpdate.score + "%";
+            scoreUpdate.score++;
+            scoreUpdate.getScore.text = scoreUpdate.score * (100f / scoreUpdate.progressBar.maxValue) + "%";
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("EnemyShape"))
@@ -24,7 +24,7 @@ public class ShapeDetect : MonoBehaviour
             }
             else
             {
-                scoreUpdate.score -= (scoreUpdate.progressBar.maxValue / 100f);
+                scoreUpdate.score -= (100f / scoreUpdate.progressBar.maxValue);
                 scoreUpdate.getScore.text = scoreUpdate.score + "%";
             }
             Destroy(other.gameObject);

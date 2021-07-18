@@ -7,7 +7,7 @@ public class EnemyFollow : MonoBehaviour
     Transform tr_Player;
     float f_RotSpeed = 3.0f, f_MoveSpeed = 2.0f;
 
-    public float MobDist = 30f;
+    public float MobDist = 40f;
     private float currTime, targetTime = 20f;
 
     // Use this for initialization

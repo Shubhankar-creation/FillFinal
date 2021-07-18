@@ -23,10 +23,10 @@ public class Manageuiandmat : MonoBehaviour
 
     void Update()
     {
-        if(score >= 100f)
+        if(score >= progressBar.maxValue)
         {
-            changingProgressBar();
             gettingnewMaterials();
+            changingProgressBar();
         }
     }
 
@@ -35,8 +35,10 @@ public class Manageuiandmat : MonoBehaviour
         getLevel.text = "Level " + ++level;
         getScore.text = "0%";
         progressBar.value = 0f;
+        progressBar.maxValue += level * 10;
         score = 0f;
-        if(level % 2 == 0) getLevel.color = Color.white;
+        if (randInd % 2 == 0) getLevel.color = Color.black;
+        else    getLevel.color = Color.white;
     }
     void gettingnewMaterials()
     {
@@ -46,7 +48,7 @@ public class Manageuiandmat : MonoBehaviour
 
     void getInd(int i)
     {
-        while(randInd == i)     randInd = Random.Range(0, 2);
+        while(randInd == i)     randInd = Random.Range(0, groundMaterials.Length);
     }
     void changeInitialSpawnObj()
     {
@@ -60,7 +62,8 @@ public class Manageuiandmat : MonoBehaviour
 
         foreach(GameObject hole in allHoles)
         {
-            hole.GetComponent<MeshRenderer>().material = groundMaterials[1 - randInd];
+            if(randInd % 2 == 0)    hole.GetComponent<MeshRenderer>().material = groundMaterials[1];
+            else    hole.GetComponent<MeshRenderer>().material = groundMaterials[0];
         }
     }
 }
