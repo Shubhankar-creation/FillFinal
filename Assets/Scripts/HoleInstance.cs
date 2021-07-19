@@ -62,8 +62,16 @@ public class HoleInstance : MonoBehaviour
     void randomPos(float x, float y)
     {
 
-            xVal = Random.Range(x - 40f, x + 40f);
-            zVal = Random.Range(y, y + 40f);
+        if (xVal < 0)
+        {
+            xVal = Random.Range(x - 50f, x + 50f);
+            zVal = Random.Range(y, y + 50f);
+        }
+        else
+        {
+            xVal = Random.Range(x - 50f, x + 50f);
+            zVal = Random.Range(y - 50f, y);
+        }
 
     }
 }

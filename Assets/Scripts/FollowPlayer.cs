@@ -8,6 +8,6 @@ public class FollowPlayer : MonoBehaviour
         transform.position = new Vector3(PM.transform.position.x,
             transform.position.y,
             PM.transform.position.z);
-        transform.rotation = Quaternion.Lerp(transform.rotation, PM.transform.rotation, 0.1f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, PM.transform.rotation.y, transform.rotation.x), 0.1f);
     }
 }

@@ -7,7 +7,7 @@ public class EnemyFollow : MonoBehaviour
     Transform tr_Player;
     float f_RotSpeed = 3.0f, f_MoveSpeed = 2.0f;
 
-    public float MobDist = 30f;
+    public float MobDist = 50f;
     private float currTime, targetTime = 20f;
 
     // Use this for initialization
@@ -24,6 +24,10 @@ public class EnemyFollow : MonoBehaviour
         
 
         float distance = Vector3.Distance(tr_Player.position, transform.position);
+
+        if (distance > 10f) f_MoveSpeed = 5f;
+        else f_MoveSpeed = 2f;
+
         if ((distance < MobDist) && (currTime < targetTime) && (tr_Player.transform.position.y == 0))
         {
             /* Look at Player*/

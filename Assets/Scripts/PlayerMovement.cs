@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float slideSensitivity;
     public float rotationSensitivity;
 
+    private bool fallRotation = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.forward * forwardSpeed, ForceMode.VelocityChange);
         }
         sideWaysMovement();
+
+        if(fallRotation)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0f, transform.rotation.y, 50f)), 0.1f);
+        }
     }
 
     void sideWaysMovement()
@@ -55,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Hole"))
         {
             rb.useGravity = true;
+            fallRotation = true;
         }
     }
 }
