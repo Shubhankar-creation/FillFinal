@@ -26,28 +26,28 @@ public class EnemyFollow : MonoBehaviour
         float distance = Vector3.Distance(tr_Player.position, transform.position);
 
         if (distance > 10f) f_MoveSpeed = 5f;
-        else f_MoveSpeed = 2f;
+        else f_MoveSpeed = 2.5f;
 
         if ((distance < MobDist) && (currTime < targetTime) && (tr_Player.transform.position.y == 0))
         {
-            /* Look at Player*/
-            transform.rotation = Quaternion.Slerp(transform.rotation
-                                                  , Quaternion.LookRotation(tr_Player.position - transform.position)
-                                                  , f_RotSpeed * Time.deltaTime);
-
-            /* Move at Player*/
-            transform.position += transform.forward * f_MoveSpeed * Time.deltaTime;
-            currTime += Time.deltaTime;
+            enemyPosChange();
         }
-        else
+        else if((currTime > targetTime) && (tr_Player.transform.position.y == 0))
         {
-            StartCoroutine("waitForEnemyFollow");
+            f_MoveSpeed = 1f;
+            enemyPosChange();
         }
     }
 
-    IEnumerator waitForEnemyFollow()
+    private void enemyPosChange()
     {
-        yield return new WaitForSeconds(20f);
-        currTime = 0f;
+        /* Look at Player*/
+        transform.rotation = Quaternion.Slerp(transform.rotation
+                                              , Quaternion.LookRotation(tr_Player.position - transform.position)
+                                              , f_RotSpeed * Time.deltaTime);
+
+        /* Move at Player*/
+        transform.position += transform.forward * f_MoveSpeed * Time.deltaTime;
+        currTime += Time.deltaTime;
     }
 }

@@ -5054,7 +5054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa71c2b5a89ae04086092fff4b598cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 24
+  score: 0
   level: 1
   randInd: 0
   getLevel: {fileID: 1851225609}
@@ -5097,6 +5097,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0099dd9fe33ef7049bbad971ebc65fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &846884597 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 169361189370319601, guid: 928b381bfed7eb143bd3e93ce65caaa8,
+    type: 3}
+  m_PrefabInstance: {fileID: 169361188534991876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &976679709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976679711}
+  - component: {fileID: 976679710}
+  m_Layer: 0
+  m_Name: InstantiateBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &976679710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976679709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770cae5c49715dc4a80f48d6b7d2260f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb: {fileID: 7868459079940638187, guid: 35c5e80cc78d7de44824e25828bbf146, type: 3}
+  playerPos: {fileID: 846884597}
+--- !u!4 &976679711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976679709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314138977
 GameObject:
   m_ObjectHideFlags: 0
@@ -5225,7 +5276,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -5677,6 +5728,16 @@ PrefabInstance:
       propertyPath: G_Holder
       value: 
       objectReference: {fileID: 385497001}
+    - target: {fileID: 169361189370319606, guid: 928b381bfed7eb143bd3e93ce65caaa8,
+        type: 3}
+      propertyPath: forwardSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 169361189370319606, guid: 928b381bfed7eb143bd3e93ce65caaa8,
+        type: 3}
+      propertyPath: bombExplosion
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 928b381bfed7eb143bd3e93ce65caaa8, type: 3}
 --- !u!1001 &2556039653956132915
@@ -5848,6 +5909,11 @@ PrefabInstance:
       propertyPath: PM
       value: 
       objectReference: {fileID: 846884591}
+    - target: {fileID: 4580774996227045915, guid: 1fe8031dc7984774fad8cd7e060d6b71,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4580774996496362073, guid: 1fe8031dc7984774fad8cd7e060d6b71,
         type: 3}
       propertyPath: m_RootOrder

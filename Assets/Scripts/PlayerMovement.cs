@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float forwardSpeed;
     public float slideSensitivity;
     public float rotationSensitivity;
+
+    private ParticleSystem bombExplosion;
+    private bool playerSafe = false;
 
     private bool fallRotation = false;
 
@@ -64,5 +69,37 @@ public class PlayerMovement : MonoBehaviour
             rb.useGravity = true;
             fallRotation = true;
         }
+        else if (other.gameObject.CompareTag("Bomb"))
+        {
+            playerSafe = false;
+            StartCoroutine("exploseionWait");
+            Debug.Log("PlayerUnsafe");
+            bombExplosion = other.gameObject.GetComponentInChildren<ParticleSystem>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bomb"))
+        {
+            playerSafe = true;
+            Debug.Log("PlayerSafe");
+        }
+    }
+
+    IEnumerator exploseionWait()
+    {
+        yield return new WaitForSeconds(3f);
+        if(!playerSafe)  bombExplosion.Play();
+        if (!playerSafe)
+        {
+            forwardSpeed = 0f;
+            StartCoroutine("RestartGame");
+        }
+    }
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(2f);
+        playerSafe = false;
+        SceneManager.LoadScene(0);
     }
 }

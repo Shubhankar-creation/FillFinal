@@ -8,6 +8,8 @@ public class HoleDestroy : MonoBehaviour
         transform.position = new Vector3(PM.transform.position.x,
             transform.position.y,
             PM.transform.position.z);
+        transform.rotation = Quaternion.Lerp(transform.rotation, PM.transform.rotation, 0.1f);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -15,6 +17,10 @@ public class HoleDestroy : MonoBehaviour
         if (other.gameObject.CompareTag("Hole"))
         {
             Destroy(other.gameObject.transform.parent.gameObject);
+        }
+        if(other.gameObject.CompareTag("Bomb"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }

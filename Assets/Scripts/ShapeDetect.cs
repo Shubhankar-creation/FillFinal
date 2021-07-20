@@ -39,7 +39,7 @@ public class ShapeDetect : MonoBehaviour
     }
     IEnumerator shapeWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("shapeCol", false);
     }
 }
