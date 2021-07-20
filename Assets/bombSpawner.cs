@@ -17,11 +17,16 @@ public class bombSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         instanceBomb();
-        destroyBomb();
+        //destroyBomb();
     }
     
     void instanceBomb()
     {
+        if(playerPos.transform.localEulerAngles.y > 74f && playerPos.transform.localEulerAngles.y <= 106f 
+            && playerPos.transform.localEulerAngles.y > 254f && playerPos.transform.localEulerAngles.y <= 286f)
+        {
+            return;
+        }
         float newZ = Random.Range(12f, 15f);
         newZ = getZval(newZ);
         float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
@@ -42,12 +47,15 @@ public class bombSpawner : MonoBehaviour
         return z;
     }
 
+    /*
     void destroyBomb()
     {
         float distance = Vector3.Distance(playerPos.transform.position, newBomb.transform.position);
         if(distance > 15f)
         {
+            Debug.Log("Destroyed GameObject");
             Destroy(newBomb);
         }
     }
+    */
 }
