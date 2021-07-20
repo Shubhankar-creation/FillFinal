@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float forwardSpeed;
     public float slideSensitivity;
     public float rotationSensitivity;
+    private Animator anim;
 
     private ParticleSystem bombExplosion;
     private bool playerSafe = false;
@@ -71,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Bomb"))
         {
+            anim = other.gameObject.GetComponent<Animator>();
+            anim.SetBool("canExplode", true);
             playerSafe = false;
             StartCoroutine("exploseionWait");
             Debug.Log("PlayerUnsafe");
@@ -81,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bomb"))
         {
+            anim = other.gameObject.GetComponent<Animator>();
+            anim.SetBool("canExplode", false);
             playerSafe = true;
             Debug.Log("PlayerSafe");
         }

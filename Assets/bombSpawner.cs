@@ -7,6 +7,7 @@ public class bombSpawner : MonoBehaviour
     public GameObject Bomb;
     public Transform playerPos;
 
+    private int ct = 0;
     private GameObject newBomb;
     void Start()
     {
@@ -17,26 +18,31 @@ public class bombSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         instanceBomb();
-        //destroyBomb();
+        destroyBomb();
     }
     
     void instanceBomb()
     {
-        if(playerPos.transform.localEulerAngles.y > 74f && playerPos.transform.localEulerAngles.y <= 106f 
-            && playerPos.transform.localEulerAngles.y > 254f && playerPos.transform.localEulerAngles.y <= 286f)
+        if(ct == 0)
         {
-            return;
+            if (playerPos.transform.localEulerAngles.y > 74f && playerPos.transform.localEulerAngles.y <= 106f
+            && playerPos.transform.localEulerAngles.y > 254f && playerPos.transform.localEulerAngles.y <= 286f)
+            {
+                return;
+            }
+            float newZ = Random.Range(12f, 15f);
+            newZ = getZval(newZ);
+            float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
+            Debug.Log("Radian value is " + playerPos.localEulerAngles.y * Mathf.PI / 180);
+            Debug.Log("Tan thetha value is " + m);
+            float newX = newZ * m;
+            Vector3 bombPos = new Vector3(playerPos.transform.position.x + newX, 1f, playerPos.transform.position.z + newZ);
+            newBomb = Instantiate(Bomb, bombPos, Quaternion.identity) as GameObject;
+            newBomb.transform.parent = transform;
+            ct = 1;
         }
-        float newZ = Random.Range(12f, 15f);
-        newZ = getZval(newZ);
-        float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
-        Debug.Log("Radian value is " + playerPos.localEulerAngles.y * Mathf.PI / 180);
-        Debug.Log("Tan thetha value is " + m);
-        float newX = newZ * m;
-        Vector3 bombPos = new Vector3(playerPos.transform.position.x + newX, 1f, playerPos.transform.position.z + newZ);
-        newBomb = Instantiate(Bomb, bombPos, Quaternion.identity) as GameObject;
-        newBomb.transform.parent = transform;
         StartCoroutine("SpawnBomb");
+
     }
     float getZval(float z)
     {
@@ -47,7 +53,7 @@ public class bombSpawner : MonoBehaviour
         return z;
     }
 
-    /*
+
     void destroyBomb()
     {
         float distance = Vector3.Distance(playerPos.transform.position, newBomb.transform.position);
@@ -55,7 +61,8 @@ public class bombSpawner : MonoBehaviour
         {
             Debug.Log("Destroyed GameObject");
             Destroy(newBomb);
+            ct = 0;
         }
     }
-    */
+
 }
