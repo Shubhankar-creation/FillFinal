@@ -31,5 +31,6 @@ public class GroundDestroy : MonoBehaviour
             }
             Destroy(GPrefab);
         }
+        Destroy(other.gameObject);
     }
 }

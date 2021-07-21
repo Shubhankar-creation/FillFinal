@@ -76,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("canExplode", true);
             playerSafe = false;
             StartCoroutine("exploseionWait");
-            Debug.Log("PlayerUnsafe");
             bombExplosion = other.gameObject.GetComponentInChildren<ParticleSystem>();
         }
     }
@@ -87,24 +86,23 @@ public class PlayerMovement : MonoBehaviour
             anim = other.gameObject.GetComponent<Animator>();
             anim.SetBool("canExplode", false);
             playerSafe = true;
-            Debug.Log("PlayerSafe");
         }
     }
 
     IEnumerator exploseionWait()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         if(!playerSafe)  bombExplosion.Play();
         if (!playerSafe)
         {
             forwardSpeed = 0f;
+            rb.useGravity = true;
             StartCoroutine("RestartGame");
         }
     }
     IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(1.5f);
-        playerSafe = false;
         SceneManager.LoadScene(0);
     }
 }

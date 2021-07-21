@@ -7,7 +7,6 @@ public class bombSpawner : MonoBehaviour
     public GameObject Bomb;
     public Transform playerPos;
 
-    private int ct = 0;
     private GameObject newBomb;
     void Start()
     {
@@ -16,31 +15,51 @@ public class bombSpawner : MonoBehaviour
 
     IEnumerator SpawnBomb()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         instanceBomb();
-        destroyBomb();
     }
     
     void instanceBomb()
     {
-        if(ct == 0)
+
+        float newZ;
+
+        if(playerPos.transform.localEulerAngles.y == 90 || playerPos.transform.localEulerAngles.y == 270)
         {
-            if (playerPos.transform.localEulerAngles.y > 74f && playerPos.transform.localEulerAngles.y <= 106f
-            && playerPos.transform.localEulerAngles.y > 254f && playerPos.transform.localEulerAngles.y <= 286f)
-            {
-                return;
-            }
-            float newZ = Random.Range(12f, 15f);
-            newZ = getZval(newZ);
-            float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
-            Debug.Log("Radian value is " + playerPos.localEulerAngles.y * Mathf.PI / 180);
-            Debug.Log("Tan thetha value is " + m);
-            float newX = newZ * m;
-            Vector3 bombPos = new Vector3(playerPos.transform.position.x + newX, 1f, playerPos.transform.position.z + newZ);
-            newBomb = Instantiate(Bomb, bombPos, Quaternion.identity) as GameObject;
-            newBomb.transform.parent = transform;
-            ct = 1;
+            return;
         }
+        if (playerPos.transform.localEulerAngles.y > 49 && playerPos.transform.localEulerAngles.y <= 89)
+        {
+            float a = (playerPos.transform.localEulerAngles.y - 50) * 0.125f;
+            newZ = 5 - a;
+        }
+        else if (playerPos.transform.localEulerAngles.y > 230 && playerPos.transform.localEulerAngles.y <= 269)
+        {
+            float a = (playerPos.transform.localEulerAngles.y - 230) * 0.125f;
+            newZ = 5 - a;
+        }
+        else if(playerPos.transform.localEulerAngles.y > 90f && playerPos.transform.localEulerAngles.y <= 130)
+        {
+            float a = (130 - playerPos.transform.localEulerAngles.y) * 0.125f;
+            newZ = 5 - a;
+            Debug.Log(newZ);
+        }
+        else if (playerPos.transform.localEulerAngles.y > 270 && playerPos.transform.localEulerAngles.y <= 310)
+        {
+            float a = (310 - playerPos.transform.localEulerAngles.y) * 0.125f;
+            newZ = 5 - a;
+            Debug.Log(newZ);
+        }
+        else newZ = 7f;
+
+        newZ = getZval(newZ);
+        float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
+        Debug.Log("Radian value is " + playerPos.localEulerAngles.y * Mathf.PI / 180);
+        Debug.Log("Tan thetha value is " + m);
+        float newX = newZ * m;
+        Vector3 bombPos = new Vector3(playerPos.transform.position.x + newX, 1f, playerPos.transform.position.z + newZ);
+        newBomb = Instantiate(Bomb, bombPos, Quaternion.identity) as GameObject;
+        newBomb.transform.parent = transform;
         StartCoroutine("SpawnBomb");
 
     }
@@ -52,17 +71,4 @@ public class bombSpawner : MonoBehaviour
         }        
         return z;
     }
-
-
-    void destroyBomb()
-    {
-        float distance = Vector3.Distance(playerPos.transform.position, newBomb.transform.position);
-        if(distance > 15f)
-        {
-            Debug.Log("Destroyed GameObject");
-            Destroy(newBomb);
-            ct = 0;
-        }
-    }
-
 }

@@ -5916,8 +5916,18 @@ PrefabInstance:
       objectReference: {fileID: 846884591}
     - target: {fileID: 4580774996227045915, guid: 1fe8031dc7984774fad8cd7e060d6b71,
         type: 3}
+      propertyPath: m_Size.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580774996227045915, guid: 1fe8031dc7984774fad8cd7e060d6b71,
+        type: 3}
       propertyPath: m_Size.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580774996227045915, guid: 1fe8031dc7984774fad8cd7e060d6b71,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4580774996496362073, guid: 1fe8031dc7984774fad8cd7e060d6b71,
         type: 3}
