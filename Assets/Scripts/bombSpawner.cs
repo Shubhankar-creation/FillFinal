@@ -15,7 +15,7 @@ public class bombSpawner : MonoBehaviour
 
     IEnumerator SpawnBomb()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         instanceBomb();
     }
     

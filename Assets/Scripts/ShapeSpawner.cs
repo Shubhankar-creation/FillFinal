@@ -102,6 +102,7 @@ public class ShapeSpawner : MonoBehaviour
             else
             {
                 newShape = Instantiate(allyShape, newPos, Quaternion.identity) as GameObject;
+                newShape.AddComponent<PowerUp>();
             }
 
             newShape.transform.parent = this.transform;

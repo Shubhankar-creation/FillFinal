@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool fallRotation = false;
 
+    public bool canAttract;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -78,6 +80,12 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine("exploseionWait");
             bombExplosion = other.gameObject.GetComponentInChildren<ParticleSystem>();
         }
+        else if(other.gameObject.CompareTag("Magnet"))
+        {
+            canAttract = true;
+            Destroy(other.gameObject);
+            StartCoroutine("magnetLimit");
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -89,6 +97,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    IEnumerator magnetLimit()
+    {
+        yield return new WaitForSeconds(10f);
+        canAttract = false;
+    }
     IEnumerator exploseionWait()
     {
         yield return new WaitForSeconds(0.5f);
