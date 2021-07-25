@@ -10,6 +10,7 @@ public class bombSpawner : MonoBehaviour
     private GameObject newBomb;
     void Start()
     {
+        if(Random.Range(0,10) == 0)
         instanceBomb();
     }
 

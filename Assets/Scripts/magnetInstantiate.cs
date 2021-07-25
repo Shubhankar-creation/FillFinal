@@ -8,12 +8,12 @@ public class magnetInstantiate : MonoBehaviour
     public GameObject magnetPrefab;
 
     private GameObject newMagnet;
-    private Manageuiandmat getLevel;
+    private canvasData getLevel;
     private float playerRot;
     private Vector3 playerPos;
     void Start()
     {
-        getLevel = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
+        getLevel = GameObject.Find("canvasManager").GetComponent<canvasData>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         playerRot = GameObject.FindGameObjectWithTag("Player").transform.localEulerAngles.y;
         StartCoroutine("spawnMagnet");

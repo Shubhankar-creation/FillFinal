@@ -18,10 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool fallRotation = false;
 
+    private canvasData playerData;
     public bool canAttract;
 
     private void Start()
     {
+        playerData = GameObject.Find("canvasManager").GetComponent<canvasData>();
         rb = GetComponent<Rigidbody>();
     }
     public void FixedUpdate()
@@ -116,6 +118,9 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(1.5f);
+        PlayerPrefs.SetInt("Scenelevel", playerData.level);
+        PlayerPrefs.SetInt("materialInd", playerData.randInd);
+        PlayerPrefs.SetInt("levelColor", playerData.levelTextColor);
         SceneManager.LoadScene(0);
     }
 }

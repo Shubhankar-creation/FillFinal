@@ -11,10 +11,10 @@ public class HoleInstance : MonoBehaviour
 
     public GameObject HoleShape;
 
-    private Manageuiandmat changeHMat;
+    private canvasData changeHMat;
     private void Start()
     {
-        changeHMat = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
+        changeHMat = GameObject.Find("canvasManager").GetComponent<canvasData>();
         respawnColDetect = GameObject.FindGameObjectWithTag("Player").GetComponent<GroundSpawner>();
         for (int i = 0; i < 4; i++)
         {
@@ -36,6 +36,7 @@ public class HoleInstance : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 HoleCreation();
+                waitDestroy();
             }
             respawnColDetect.canSpawn = false;
         }
@@ -54,9 +55,8 @@ public class HoleInstance : MonoBehaviour
 
         newHole.GetComponent<MeshRenderer>().material = changeHMat.groundMaterials[1 - changeHMat.randInd];
 
-
-
         newHole.AddComponent<EnemyFollow>();
+        newHole.AddComponent<waitDestroyHole>();
 
     }
     void randomPos(float x, float y)
@@ -73,5 +73,10 @@ public class HoleInstance : MonoBehaviour
             zVal = Random.Range(y - 50f, y);
         }
 
+    }
+
+    IEnumerator waitDestroy()
+    {
+        yield return new WaitForSeconds(40f);
     }
 }

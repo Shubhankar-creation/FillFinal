@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ShapeDetect : MonoBehaviour
 {
-    private Manageuiandmat scoreUpdate;
+    private canvasData scoreUpdate;
     public Animator anim;
     private void Start()
     {
-        scoreUpdate = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
+        scoreUpdate = GameObject.Find("canvasManager").GetComponent<canvasData>();
     }
     private void OnTriggerEnter(Collider other)
     {

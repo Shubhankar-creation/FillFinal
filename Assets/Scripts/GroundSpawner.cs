@@ -18,13 +18,13 @@ public class GroundSpawner : MonoBehaviour
     private Vector2 currGround;
     public Vector2[] allGroundPos;
 
-    private Manageuiandmat changeGMat;
+    private canvasData changeGMat;
     private GameObject[] allgroundGOs;
 
     private void Start()
     {
-        changeGMat = GameObject.Find("UI/MatManager").GetComponent<Manageuiandmat>();
-
+        changeGMat = GameObject.Find("canvasManager").GetComponent<canvasData>();
+        GInstance();
         allGroundPos = new Vector2[]
         {
             new Vector2(0f, 0f),
