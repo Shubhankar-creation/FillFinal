@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2264150809916717990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2264150809916717988}
+  - component: {fileID: 2264150809916717989}
+  m_Layer: 0
+  m_Name: canvasManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2264150809916717988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264150809916717990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2264150809916717989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264150809916717990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa71c2b5a89ae04086092fff4b598cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  level: 1
+  randInd: 0
+  levelTextColor: 0
+  getLevel: {fileID: 0}
+  getScore: {fileID: 0}
+  progressBar: {fileID: 0}
+  groundMaterials:
+  - {fileID: 2100000, guid: 572ba8b7529d28e4c895290b6768fa7f, type: 2}
+  - {fileID: 2100000, guid: 7b5b17fccedb37046b33d29ea3dabac3, type: 2}
+  - {fileID: 2100000, guid: d0072519e4fc414409755ba194818d95, type: 2}
+  - {fileID: 2100000, guid: 765c05505503f2a4c9ca34aaa905aa57, type: 2}
