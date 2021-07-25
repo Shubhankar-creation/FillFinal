@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShapeDetect : MonoBehaviour
 {
     private canvasData scoreUpdate;
     public Animator anim;
+
     private void Start()
     {
         scoreUpdate = GameObject.Find("canvasManager").GetComponent<canvasData>();
@@ -22,13 +24,14 @@ public class ShapeDetect : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("EnemyShape"))
         {
-            if(scoreUpdate.score < 0)
+            if(scoreUpdate.score <= 0)
             {
-                Debug.Log("Quit Game");
+                Debug.Log("Restart game");
+                StartCoroutine("waitBeforeExit");
             }
             else
             {
-                scoreUpdate.score--;
+                scoreUpdate.score -= 2;
                 scoreUpdate.getScore.text = Mathf.Round((scoreUpdate.score * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10) + "%";
             }
             Destroy(other.gameObject);
@@ -36,6 +39,16 @@ public class ShapeDetect : MonoBehaviour
             StartCoroutine("shapeWait");
         }
         scoreUpdate.progressBar.value = scoreUpdate.score;
+    }
+
+    IEnumerator waitBeforeExit()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+        PlayerPrefs.SetInt("Scenelevel", scoreUpdate.level);
+        PlayerPrefs.SetInt("materialInd", scoreUpdate.randInd);
+        PlayerPrefs.SetInt("levelColor", scoreUpdate.levelTextColor);
+        SceneManager.LoadScene(0);
     }
     IEnumerator shapeWait()
     {
