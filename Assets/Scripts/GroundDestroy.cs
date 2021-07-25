@@ -26,7 +26,7 @@ public class GroundDestroy : MonoBehaviour
             {
                 if (currGround == getvectorPos.allGroundPos[i])
                 {
-                    getvectorPos.allGroundPos[i] = new Vector2(0f, 0f);
+                    getvectorPos.allGroundPos[i] = new Vector2(-1f, -1f);
                 }
             }
             Destroy(GPrefab);

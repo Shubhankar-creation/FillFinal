@@ -27,6 +27,7 @@ public class PlayerDestroy : MonoBehaviour
             PlayerPrefs.SetInt("Scenelevel", playerData.level);
             PlayerPrefs.SetInt("materialInd", playerData.randInd);
             PlayerPrefs.SetInt("levelColor", playerData.levelTextColor);
+            PlayerPrefs.SetFloat("Score", playerData.score);
             SceneManager.LoadScene(0);
         }
     }

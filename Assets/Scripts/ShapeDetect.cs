@@ -26,7 +26,6 @@ public class ShapeDetect : MonoBehaviour
         {
             if(scoreUpdate.score <= 0)
             {
-                Debug.Log("Restart game");
                 StartCoroutine("waitBeforeExit");
             }
             else
@@ -48,6 +47,7 @@ public class ShapeDetect : MonoBehaviour
         PlayerPrefs.SetInt("Scenelevel", scoreUpdate.level);
         PlayerPrefs.SetInt("materialInd", scoreUpdate.randInd);
         PlayerPrefs.SetInt("levelColor", scoreUpdate.levelTextColor);
+        PlayerPrefs.SetFloat("Score", scoreUpdate.score);
         SceneManager.LoadScene(0);
     }
     IEnumerator shapeWait()

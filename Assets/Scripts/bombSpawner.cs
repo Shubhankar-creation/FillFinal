@@ -10,8 +10,8 @@ public class bombSpawner : MonoBehaviour
     private GameObject newBomb;
     void Start()
     {
-        if(Random.Range(0,10) == 0)
-        instanceBomb();
+        if(Random.Range(0, 10) == 0)    instanceBomb();
+        else    StartCoroutine("SpawnBomb");
     }
 
     IEnumerator SpawnBomb()
@@ -55,8 +55,6 @@ public class bombSpawner : MonoBehaviour
 
         newZ = getZval(newZ);
         float m = Mathf.Tan(playerPos.localEulerAngles.y * Mathf.PI / 180);
-        Debug.Log("Radian value is " + playerPos.localEulerAngles.y * Mathf.PI / 180);
-        Debug.Log("Tan thetha value is " + m);
         float newX = newZ * m;
         Vector3 bombPos = new Vector3(playerPos.transform.position.x + newX, 1f, playerPos.transform.position.z + newZ);
         newBomb = Instantiate(Bomb, bombPos, Quaternion.identity) as GameObject;

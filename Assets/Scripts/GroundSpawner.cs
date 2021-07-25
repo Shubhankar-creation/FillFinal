@@ -19,23 +19,29 @@ public class GroundSpawner : MonoBehaviour
     public Vector2[] allGroundPos;
 
     private canvasData changeGMat;
-    private GameObject[] allgroundGOs;
 
     private void Start()
     {
         changeGMat = GameObject.Find("canvasManager").GetComponent<canvasData>();
-        GInstance();
+
         allGroundPos = new Vector2[]
         {
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f),
-            new Vector2(0f, 0f)
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f),
+            new Vector2(-1f, -1f)
         };
+
+        GInstance();
+
+        allGroundPos[k] = new Vector2(0f, 0f);
+        k--;
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -180,7 +186,6 @@ public class GroundSpawner : MonoBehaviour
         groundInstance.transform.parent = G_Holder.transform;
 
         groundInstance.GetComponent<MeshRenderer>().material = changeGMat.groundMaterials[changeGMat.randInd];
-
 
     }
 }

@@ -36,7 +36,6 @@ public class HoleInstance : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 HoleCreation();
-                waitDestroy();
             }
             respawnColDetect.canSpawn = false;
         }
@@ -53,7 +52,14 @@ public class HoleInstance : MonoBehaviour
         newHole.tag = "Hole";
         newHole.transform.parent = HoleParent.transform;
 
-        newHole.GetComponent<MeshRenderer>().material = changeHMat.groundMaterials[1 - changeHMat.randInd];
+        if(PlayerPrefs.GetInt("materialInd") % 2 == 0)
+        {
+            newHole.GetComponent<MeshRenderer>().material = changeHMat.groundMaterials[1];
+        }
+        else
+        {
+            newHole.GetComponent<MeshRenderer>().material = changeHMat.groundMaterials[0];
+        }
 
         newHole.AddComponent<EnemyFollow>();
         newHole.AddComponent<waitDestroyHole>();
@@ -73,10 +79,5 @@ public class HoleInstance : MonoBehaviour
             zVal = Random.Range(y - 50f, y);
         }
 
-    }
-
-    IEnumerator waitDestroy()
-    {
-        yield return new WaitForSeconds(40f);
     }
 }

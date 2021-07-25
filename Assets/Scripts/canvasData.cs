@@ -7,12 +7,13 @@ public class canvasData : MonoBehaviour
     public int level = 1;
     public int randInd = 0;
     public int levelTextColor = 0;
+
     public Text getLevel;
     public Text getScore;
 
     public Slider progressBar;
 
-    public Material[] groundMaterials;
+    public Material[] groundMaterials = new Material[4];
     
     void Start()
     {
@@ -68,7 +69,7 @@ public class canvasData : MonoBehaviour
 
     void getInd(int i)
     {
-        while(randInd == i)     randInd = Random.Range(0, groundMaterials.Length);
+        while(randInd == i)     randInd = Random.Range(0, 4);
     }
     void changeInitialSpawnObj()
     {
