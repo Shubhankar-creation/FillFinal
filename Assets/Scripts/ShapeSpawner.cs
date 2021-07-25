@@ -11,6 +11,8 @@ public class ShapeSpawner : MonoBehaviour
     private float playerRot;
     private Vector2 xPos, zPos;
 
+    private float newZ;
+
     private void Start()
     {
         playerRot = player.transform.localEulerAngles.y;
@@ -30,7 +32,7 @@ public class ShapeSpawner : MonoBehaviour
 
     private void getSpawnPos()
     {
-        float newZ;
+        float newX;
 
         if (playerRot == 90 || playerRot == 270)
         {
@@ -39,40 +41,42 @@ public class ShapeSpawner : MonoBehaviour
         if (playerRot > 49 && playerRot <= 89)
         {
             float a = (playerRot - 50) * 0.125f;
-            newZ = 5 - a;
+            getnewPos(a);
         }
         else if (playerRot > 230 && playerRot <= 269)
         {
             float a = (playerRot - 230) * 0.125f;
-            newZ = 5 - a;
+            getnewPos(a);
         }
         else if (playerRot > 90f && playerRot <= 130)
         {
             float a = (130 - playerRot) * 0.125f;
-            newZ = 5 - a;
-            Debug.Log(newZ);
+            getnewPos(a);
         }
         else if (playerRot > 270 && playerRot <= 310)
         {
             float a = (310 - playerRot) * 0.125f;
-            newZ = 5 - a;
-            Debug.Log(newZ);
+            getnewPos(a);
         }
         else newZ = 7f;
 
         newZ = getZval(newZ);
         float m = Mathf.Tan(playerRot * Mathf.PI / 180);
-        float newX = newZ * m;
+        newX = newZ * m;
         if(playerRot > 180 && playerRot < 360)
         {
-            xPos.x = newX -14f; xPos.y = newX - 7f;
+            xPos.x = newX - 14f; xPos.y = newX;
         }
         else
         {
-            xPos.x = newX ; xPos.y = newX + 7f;
+            xPos.x = newX + 2f ; xPos.y = newX + 10f;
         }
     }
 
+    void getnewPos(float n)
+    {
+        newZ = 5 - n;
+    }
     float getZval(float z)
     {
         if (playerRot >= 90f && playerRot <= 270f)
