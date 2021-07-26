@@ -8,9 +8,13 @@ public class ShapeDetect : MonoBehaviour
     private canvasData scoreUpdate;
     public Animator anim;
 
+    private AudioSource coin;
+    public AudioClip coinCollect;
+
     private void Start()
     {
         scoreUpdate = GameObject.Find("canvasManager").GetComponent<canvasData>();
+        coin = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -18,13 +22,17 @@ public class ShapeDetect : MonoBehaviour
         {
             scoreUpdate.score++;
             scoreUpdate.getScore.text = Mathf.Round(scoreUpdate.score * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10 + "%";
+            coin.clip = coinCollect;
+            coin.Play();
             Destroy(other.gameObject);
             anim.SetBool("shapeCol", true);
             StartCoroutine("shapeWait");
         }
         else if (other.gameObject.CompareTag("EnemyShape"))
         {
-            if(scoreUpdate.score <= 0)
+            coin.clip = coinCollect;
+            coin.Play();
+            if (scoreUpdate.score <= 0)
             {
                 StartCoroutine("waitBeforeExit");
             }

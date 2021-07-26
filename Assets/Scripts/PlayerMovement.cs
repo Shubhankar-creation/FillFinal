@@ -21,9 +21,13 @@ public class PlayerMovement : MonoBehaviour
     private canvasData playerData;
     public bool canAttract;
 
+    private AudioSource bombAud;
+    public AudioClip bombClip;
+
     private void Start()
     {
         playerData = GameObject.Find("canvasManager").GetComponent<canvasData>();
+        bombAud = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
     public void FixedUpdate()
@@ -107,7 +111,12 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator exploseionWait()
     {
         yield return new WaitForSeconds(0.5f);
-        if(!playerSafe)  bombExplosion.Play();
+        if (!playerSafe)
+        {
+            bombExplosion.Play();
+            bombAud.clip = bombClip;
+            bombAud.Play();
+        }
         if (!playerSafe)
         {
             forwardSpeed = 0f;

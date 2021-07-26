@@ -32,12 +32,18 @@ public class MainMenu : MonoBehaviour
     }
     public void MusicBtn()
     {
-        Debug.Log("Should change sprite of music game object");
 
-        if (musicCount % 2 == 0)
+        if (musicCount == 0)
+        {
             musicGO.GetComponent<Image>().sprite = music[1];
+            musicCount = 1;
+            AudioListener.volume = 0f;
+        }
         else
+        {
             musicGO.GetComponent<Image>().sprite = music[0];
-        musicCount++;
+            musicCount = 0;
+            AudioListener.volume = 0.25f;
+        }
     }
 }
