@@ -43,13 +43,11 @@ public class bombSpawner : MonoBehaviour
         {
             float a = (130 - playerPos.transform.localEulerAngles.y) * 0.125f;
             newZ = 5 - a;
-            Debug.Log(newZ);
         }
         else if (playerPos.transform.localEulerAngles.y > 270 && playerPos.transform.localEulerAngles.y <= 310)
         {
             float a = (310 - playerPos.transform.localEulerAngles.y) * 0.125f;
             newZ = 5 - a;
-            Debug.Log(newZ);
         }
         else newZ = 7f;
 

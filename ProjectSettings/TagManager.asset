@@ -20,6 +20,7 @@ TagManager:
   - Music
   - Bomb
   - Magnet
+  - GameMusic
   layers:
   - Default
   - TransparentFX
