@@ -20,8 +20,8 @@ public class ShapeDetect : MonoBehaviour
     {
         if(other.gameObject.CompareTag("AllyShape"))
         {
-            scoreUpdate.score++;
-            scoreUpdate.getScore.text = Mathf.Round(scoreUpdate.score * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10 + "%";
+            scoreUpdate.progressBar.value++;
+            scoreUpdate.getScore.text = Mathf.Round(scoreUpdate.progressBar.value * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10 + "%";
             coin.clip = coinCollect;
             coin.Play();
             Destroy(other.gameObject);
@@ -32,20 +32,19 @@ public class ShapeDetect : MonoBehaviour
         {
             coin.clip = coinCollect;
             coin.Play();
-            if (scoreUpdate.score <= 0)
+            if (scoreUpdate.progressBar.value <= 0)
             {
                 StartCoroutine("waitBeforeExit");
             }
             else
             {
-                scoreUpdate.score -= 2;
-                scoreUpdate.getScore.text = Mathf.Round((scoreUpdate.score * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10) + "%";
+                scoreUpdate.progressBar.value -= 2;
+                scoreUpdate.getScore.text = Mathf.Round((scoreUpdate.progressBar.value * (100f / scoreUpdate.progressBar.maxValue) * 10) / 10) + "%";
             }
             Destroy(other.gameObject);
             anim.SetBool("shapeCol", true);
             StartCoroutine("shapeWait");
         }
-        scoreUpdate.progressBar.value = scoreUpdate.score;
     }
 
     IEnumerator waitBeforeExit()
@@ -55,7 +54,9 @@ public class ShapeDetect : MonoBehaviour
         PlayerPrefs.SetInt("Scenelevel", scoreUpdate.level);
         PlayerPrefs.SetInt("materialInd", scoreUpdate.randInd);
         PlayerPrefs.SetInt("levelColor", scoreUpdate.levelTextColor);
-        PlayerPrefs.SetFloat("Score", scoreUpdate.score);
+        PlayerPrefs.SetFloat("Score", scoreUpdate.progressBar.value);
+        PlayerPrefs.SetFloat("sliderMax", scoreUpdate.progressBar.maxValue);
+        PlayerPrefs.SetString("ScoreText", scoreUpdate.getScore.text);
         SceneManager.LoadScene(0);
     }
     IEnumerator shapeWait()

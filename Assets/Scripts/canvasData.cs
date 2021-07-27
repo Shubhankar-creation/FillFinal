@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class canvasData : MonoBehaviour
 {
-    public float score = 0;
 
     public int level = 1;
     public int randInd = 0;
@@ -21,6 +20,14 @@ public class canvasData : MonoBehaviour
         getLevel.text = "Level " + PlayerPrefs.GetInt("Scenelevel", 1).ToString();
         level = PlayerPrefs.GetInt("Scenelevel", 1);
         levelTextColor = PlayerPrefs.GetInt("levelColor", 0);
+
+        progressBar.maxValue = PlayerPrefs.GetFloat("sliderMax", 25f);
+
+
+        progressBar.value = PlayerPrefs.GetFloat("Score", 0);
+
+        getScore.text = PlayerPrefs.GetString("ScoreText", "0%");
+
         if(levelTextColor == 0)
         {
             getLevel.color = Color.black;
@@ -36,7 +43,7 @@ public class canvasData : MonoBehaviour
     void Update()
     {
 
-        if (score >= progressBar.maxValue)
+        if (progressBar.value >= progressBar.maxValue)
         {
             gettingnewMaterials();
             changingProgressBar();
@@ -49,7 +56,7 @@ public class canvasData : MonoBehaviour
         getScore.text = "0%";
         progressBar.value = 0f;
         progressBar.maxValue += level * 10;
-        score = 0f;
+        progressBar.value = 0;
         if (randInd % 2 == 0)
         {
             getLevel.color = Color.black;

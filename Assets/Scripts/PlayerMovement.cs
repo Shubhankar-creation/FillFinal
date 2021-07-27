@@ -130,7 +130,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("Scenelevel", playerData.level);
         PlayerPrefs.SetInt("materialInd", playerData.randInd);
         PlayerPrefs.SetInt("levelColor", playerData.levelTextColor);
-        PlayerPrefs.SetFloat("Score", playerData.score);
+        PlayerPrefs.SetFloat("Score", playerData.progressBar.value);
+        PlayerPrefs.SetFloat("sliderMax", playerData.progressBar.maxValue);
+        PlayerPrefs.SetString("ScoreText", playerData.getScore.text);
         SceneManager.LoadScene(0);
     }
 }

@@ -9,10 +9,15 @@ public class mainMenuCanvas : MonoBehaviour
     public GameObject placeHolder;
 
     public Slider progressBar;
+    public Text scoreText;
 
     private void Start()
     {
         playerData = GetComponent<canvasData>();
+
+        progressBar.maxValue = PlayerPrefs.GetFloat("sliderMax", 25f);
+        progressBar.value = PlayerPrefs.GetFloat("Score", 0);
+        scoreText.text = PlayerPrefs.GetString("ScoreText", "0%");
 
         placeHolder.GetComponent<TMPro.TextMeshProUGUI>().text = PlayerPrefs.GetString("P_Name", "Player");
     }
